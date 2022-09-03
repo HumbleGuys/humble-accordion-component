@@ -1,24 +1,18 @@
 const accordion = () => ({
     isOpen: false,
+    animation: null,
+    isClosing: false,
+    isExpanding: false,
+    duration: 350,
 
     init() {
-        // Store the <details> element
-        this.el = this.$el;
+        this.summary = this.$el.querySelector('.accordion__header');
+        this.content = this.$el.querySelector('.accordion__panel');
 
-        this.summary = this.el.querySelector('.accordion__header');
-        this.content = this.el.querySelector('.accordion__panel');
-
-        if (this.el.open) {
+        if (this.$el.open) {
             this.isOpen = true;
         }
 
-        // Store the animation object (so we can cancel it if needed)
-        this.animation = null;
-        // Store if the element is closing
-        this.isClosing = false;
-        // Store if the element is expanding
-        this.isExpanding = false;
-        // Detect user clicks on the summary element
         this.summary.addEventListener('click', (e) => this.onClick(e));
     },
 
@@ -26,12 +20,12 @@ const accordion = () => ({
         // Stop default behaviour from the browser
         e.preventDefault();
         // Add an overflow on the <details> to avoid content overflowing
-        this.el.style.overflow = 'hidden';
+        this.$el.style.overflow = 'hidden';
         // Check if the element is being closed or is already closed
-        if (this.isClosing || !this.el.open) {
+        if (this.isClosing || !this.$el.open) {
             this.open();
             // Check if the element is being openned or is already open
-        } else if (this.isExpanding || this.el.open) {
+        } else if (this.isExpanding || this.$el.open) {
             this.shrink();
         }
     },
@@ -42,7 +36,7 @@ const accordion = () => ({
         this.isClosing = true;
 
         // Store the current height of the element
-        const startHeight = `${this.el.offsetHeight}px`;
+        const startHeight = `${this.$el.offsetHeight}px`;
         // Calculate the height of the summary
         const endHeight = `${this.summary.offsetHeight}px`;
 
@@ -53,11 +47,11 @@ const accordion = () => ({
         }
 
         // Start a WAAPI animation
-        this.animation = this.el.animate({
+        this.animation = this.$el.animate({
             // Set the keyframes from the startHeight to endHeight
             height: [startHeight, endHeight]
         }, {
-            duration: 350,
+            duration: this.duration,
             easing: 'ease-out'
         });
 
@@ -68,9 +62,9 @@ const accordion = () => ({
     },
 
     open() {
-        this.el.style.height = `${this.el.offsetHeight}px`;
+        this.$el.style.height = `${this.$el.offsetHeight}px`;
         // Force the [open] attribute on the details element
-        this.el.open = true;
+        this.$el.open = true;
         // Wait for the next frame to call the expand function
         window.requestAnimationFrame(() => this.expand());
     },
@@ -80,7 +74,7 @@ const accordion = () => ({
         this.isOpen = true;
         this.isExpanding = true;
         // Get the current fixed height of the element
-        const startHeight = `${this.el.offsetHeight}px`;
+        const startHeight = `${this.$el.offsetHeight}px`;
         // Calculate the open height of the element (summary height + content height)
         const endHeight = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
 
@@ -91,11 +85,11 @@ const accordion = () => ({
         }
 
         // Start a WAAPI animation
-        this.animation = this.el.animate({
+        this.animation = this.$el.animate({
             // Set the keyframes from the startHeight to endHeight
             height: [startHeight, endHeight]
         }, {
-            duration: 350,
+            duration: this.duration,
             easing: 'ease-out'
         });
         // When the animation is complete, call onAnimationFinish()
@@ -106,7 +100,7 @@ const accordion = () => ({
 
     onAnimationFinish(open) {
         // Set the open attribute based on the parameter
-        this.el.open = open;
+        this.$el.open = open;
         this.isOpen = open;
         // Clear the stored animation
         this.animation = null;
@@ -114,7 +108,7 @@ const accordion = () => ({
         this.isClosing = false;
         this.isExpanding = false;
         // Remove the overflow hidden and the fixed height
-        this.el.style.height = this.el.style.overflow = '';
+        this.$el.style.height = this.$el.style.overflow = '';
     },
 });
 
