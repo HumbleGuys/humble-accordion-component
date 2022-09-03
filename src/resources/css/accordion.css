@@ -28,6 +28,6 @@
     padding: 0.8rem 0 3.2rem;
 }
 
-.accordion[open] .accordion__headerIcon {
+.accordion.isOpen .accordion__headerIcon {
     transform: rotate(0.5turn);
 }

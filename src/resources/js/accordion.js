@@ -1,10 +1,16 @@
 const accordion = () => ({
+    isOpen: false,
+
     init() {
         // Store the <details> element
         this.el = this.$el;
 
         this.summary = this.el.querySelector('.accordion__header');
         this.content = this.el.querySelector('.accordion__panel');
+
+        if (this.el.open) {
+            this.isOpen = true;
+        }
 
         // Store the animation object (so we can cancel it if needed)
         this.animation = null;
@@ -32,6 +38,7 @@ const accordion = () => ({
 
     shrink() {
         // Set the element as "being closed"
+        this.isOpen = false;
         this.isClosing = true;
 
         // Store the current height of the element
@@ -61,7 +68,6 @@ const accordion = () => ({
     },
 
     open() {
-        // Apply a fixed height on the element
         this.el.style.height = `${this.el.offsetHeight}px`;
         // Force the [open] attribute on the details element
         this.el.open = true;
@@ -71,6 +77,7 @@ const accordion = () => ({
 
     expand() {
         // Set the element as "being expanding"
+        this.isOpen = true;
         this.isExpanding = true;
         // Get the current fixed height of the element
         const startHeight = `${this.el.offsetHeight}px`;
@@ -100,6 +107,7 @@ const accordion = () => ({
     onAnimationFinish(open) {
         // Set the open attribute based on the parameter
         this.el.open = open;
+        this.isOpen = open;
         // Clear the stored animation
         this.animation = null;
         // Reset isClosing & isExpanding
