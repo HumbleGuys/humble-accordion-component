@@ -1,9 +1,18 @@
 .accordion {
-    border-bottom: 2px solid currentColor;
+    --borderWidth: 2px;
+    --borderColor: currentColor;
+    --headerPadding: 2rem 0;
+    --iconSize: 2.4rem;
+    --iconRotateWhenOpen: 0.5turn;
+    --iconTransition:  0.35s ease-out;
+    --iconMarginLeft: 3rem;
+    --panelPadding: 0.8rem 0 3.2rem;
+
+    border-bottom: var(--borderWidth) solid var(--borderColor);
 }
 
 .accordion__header {
-    padding: 2rem 0;
+    padding: var(--headerPadding);
     list-style: none;
     display: flex;
     align-items: center;
@@ -12,22 +21,23 @@
     cursor: pointer;
 }
 
-.accordion__headerIcon {
-    flex-shrink: 0;
-    width: 2.4rem;
-    margin-left: 2rem;
-    transition: 0.35s ease-out;
-}
-
 .accordion__header::marker,
 .accordion__header::-webkit-details-marker {
-    display:none;
-  }
-
-.accordion__panel {
-    padding: 0.8rem 0 3.2rem;
+    display: none;
 }
 
-.accordion.isOpen .accordion__headerIcon {
-    transform: rotate(0.5turn);
+.accordion__icon {
+    flex-shrink: 0;
+    width: var(--iconSize);
+    height: var(--iconSize);
+    margin-left: var(--iconMarginLeft);
+    transition: var(--iconTransition);
+}
+
+.accordion__panel {
+    padding: var(--panelPadding);
+}
+
+.accordion.isOpen .accordion__icon {
+    transform: rotate(var(--iconRotateWhenOpen));
 }
