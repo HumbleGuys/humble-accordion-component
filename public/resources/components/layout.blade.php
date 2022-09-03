@@ -45,7 +45,7 @@
                 }
         </style>
 
-        @vite(['src/resources/index.css', 'src/resources/index.js'])
+        @vite(['src/resources/index.js'])
 
         <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
     </head>

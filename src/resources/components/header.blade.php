@@ -1,4 +1,4 @@
-<summary class="accordion__header">
+<summary {{ $attributes->merge(['class' => 'accordion__header']) }}>
     {!! $slot !!}
 
     @if (!empty($icon))

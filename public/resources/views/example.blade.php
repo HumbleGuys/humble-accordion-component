@@ -20,8 +20,11 @@
             </x-accordion::panel>
         </x-accordion::base>
     
-        <x-accordion::base style="--iconRotateWhenOpen: 0.125turn">
-            <x-accordion::header>
+        <x-accordion::base 
+            style="--iconRotateWhenOpen: 0.125turn"
+            class="myAccordion"    
+        >
+            <x-accordion::header class="myHeader">
                 Test
 
                 <x-slot name="icon">
@@ -29,7 +32,7 @@
                 </x-slot>
             </x-accordion::header>
     
-            <x-accordion::panel>
+            <x-accordion::panel class="myPanel">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum commodi facere assumenda? Quibusdam excepturi exercitationem, ullam accusantium architecto incidunt saepe maxime veritatis nisi laborum reiciendis iste facilis nihil deleniti repellat.
             </x-accordion::panel>
         </x-accordion::base>

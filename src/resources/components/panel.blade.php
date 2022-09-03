@@ -1,3 +1,3 @@
-<div class="accordion__panel">
+<div {{ $attributes->merge(['class' => 'accordion__panel']) }}>
     {!! $slot !!}
 </div>
