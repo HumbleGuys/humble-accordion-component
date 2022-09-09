@@ -8,6 +8,13 @@ export default defineConfig(({ command }) => {
         build: {
             manifest: true,
             outDir: 'public/resources/dist',
+
+            lib: {
+                name: "humble-accordion-component",
+                entry: 'src/resources/index.js',
+                fileName: 'humble-accordion-component'
+            },
+
             rollupOptions: {
                 input: 'src/resources/index.js'
             }
