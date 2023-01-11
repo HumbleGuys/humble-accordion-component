@@ -4,11 +4,12 @@
     --headerPadding: 2rem 0;
     --iconSize: 2.4rem;
     --iconRotateWhenOpen: 0.5turn;
-    --iconTransition:  0.35s ease-out;
+    --iconTransition: 0.35s ease-out;
     --iconMarginLeft: 3rem;
     --panelPadding: 0.8rem 0 3.2rem;
 
     border-bottom: var(--borderWidth) solid var(--borderColor);
+    will-change: height;
 }
 
 .accordion__header {
