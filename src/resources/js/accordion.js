@@ -104,7 +104,8 @@ const accordion = () => ({
             }
         );
         // When the animation is complete, call onAnimationFinish()
-        this.animation.onfinish = () => this.onAnimationFinish(true);
+        this.animation.onfinish = () =>
+            window.requestAnimationFrame(() => this.onAnimationFinish(true));
         // If the animation is cancelled, isExpanding variable is set to false
         this.animation.oncancel = () => (this.isExpanding = false);
     },
