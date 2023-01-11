@@ -53,6 +53,7 @@ const accordion = () => ({
                 height: [startHeight, endHeight],
             },
             {
+                fill: "forwards",
                 duration: this.duration,
                 easing: "linear",
             }
@@ -99,13 +100,16 @@ const accordion = () => ({
                 height: [startHeight, endHeight],
             },
             {
+                fill: "forwards",
                 duration: this.duration,
                 easing: "linear",
             }
         );
         // When the animation is complete, call onAnimationFinish()
         this.animation.onfinish = () =>
-            window.requestAnimationFrame(() => this.onAnimationFinish(true));
+            setTimeout(() => {
+                this.onAnimationFinish(true);
+            }, 100);
         // If the animation is cancelled, isExpanding variable is set to false
         this.animation.oncancel = () => (this.isExpanding = false);
     },

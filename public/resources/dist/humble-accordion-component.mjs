@@ -18,6 +18,7 @@ const n = () => ({
         height: [i, t]
       },
       {
+        fill: "forwards",
         duration: this.duration,
         easing: "linear"
       }
@@ -36,10 +37,13 @@ const n = () => ({
         height: [i, t]
       },
       {
+        fill: "forwards",
         duration: this.duration,
         easing: "linear"
       }
-    ), this.animation.onfinish = () => window.requestAnimationFrame(() => this.onAnimationFinish(!0)), this.animation.oncancel = () => this.isExpanding = !1;
+    ), this.animation.onfinish = () => setTimeout(() => {
+      this.onAnimationFinish(!0);
+    }, 100), this.animation.oncancel = () => this.isExpanding = !1;
   },
   onAnimationFinish(i) {
     this.$el.open = i, this.isOpen = i, this.animation = null, this.isClosing = !1, this.isExpanding = !1, this.$el.style.height = "", this.$el.style.overflow = "";

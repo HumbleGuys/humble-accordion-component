@@ -8,7 +8,7 @@
 
 @once
     @push('head')
-        <link rel="stylesheet" href="{{ asset('../vendor/humble-guys/humble-accordion-component/public/resources/dist/style.css?v=0.0.4') }}">
-        <script module defer src="{{ asset('../vendor/humble-guys/humble-accordion-component/public/resources/dist/humble-accordion-component.umd.js?v=0.0.4') }}"></script>
+        <link rel="stylesheet" href="{{ asset('../vendor/humble-guys/humble-accordion-component/public/resources/dist/style.css?v=0.0.5') }}">
+        <script module defer src="{{ asset('../vendor/humble-guys/humble-accordion-component/public/resources/dist/humble-accordion-component.umd.js?v=0.0.5') }}"></script>
     @endpush   
 @endonce 
