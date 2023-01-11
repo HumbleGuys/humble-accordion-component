@@ -1,4 +1,6 @@
 const accordion = () => ({
+    summaryEl: null,
+    contentEl: null,
     isOpen: false,
     animation: null,
     isClosing: false,
@@ -6,14 +8,14 @@ const accordion = () => ({
     duration: 350,
 
     init() {
-        this.summary = this.$el.querySelector(".accordion__header");
-        this.content = this.$el.querySelector(".accordion__panel");
+        this.summaryEl = this.$el.querySelector(".accordion__header");
+        this.contentEl = this.$el.querySelector(".accordion__panel");
 
         if (this.$el.open) {
             this.isOpen = true;
         }
 
-        this.summary.addEventListener("click", (e) => this.onClick(e));
+        this.summaryEl.addEventListener("click", (e) => this.onClick(e));
     },
 
     onClick(e) {
@@ -38,7 +40,7 @@ const accordion = () => ({
         // Store the current height of the element
         const startHeight = `${this.$el.offsetHeight}px`;
         // Calculate the height of the summary
-        const endHeight = `${this.summary.offsetHeight}px`;
+        const endHeight = `${this.summaryEl.offsetHeight}px`;
 
         // If there is already an animation running
         if (this.animation) {
@@ -83,7 +85,7 @@ const accordion = () => ({
         const startHeight = `${this.$el.offsetHeight}px`;
         // Calculate the open height of the element (summary height + content height)
         const endHeight = `${
-            this.summary.offsetHeight + this.content.offsetHeight
+            this.summaryEl.offsetHeight + this.contentEl.offsetHeight
         }px`;
 
         // If there is already an animation running

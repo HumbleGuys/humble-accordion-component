@@ -1,18 +1,20 @@
 const n = () => ({
+  summaryEl: null,
+  contentEl: null,
   isOpen: !1,
   animation: null,
   isClosing: !1,
   isExpanding: !1,
   duration: 350,
   init() {
-    this.summary = this.$el.querySelector(".accordion__header"), this.content = this.$el.querySelector(".accordion__panel"), this.$el.open && (this.isOpen = !0), this.summary.addEventListener("click", (i) => this.onClick(i));
+    this.summaryEl = this.$el.querySelector(".accordion__header"), this.contentEl = this.$el.querySelector(".accordion__panel"), this.$el.open && (this.isOpen = !0), this.summaryEl.addEventListener("click", (i) => this.onClick(i));
   },
   onClick(i) {
     i.preventDefault(), this.$el.style.overflow = "hidden", this.isClosing || !this.$el.open ? this.open() : (this.isExpanding || this.$el.open) && this.shrink();
   },
   shrink() {
     this.isOpen = !1, this.isClosing = !0;
-    const i = `${this.$el.offsetHeight}px`, t = `${this.summary.offsetHeight}px`;
+    const i = `${this.$el.offsetHeight}px`, t = `${this.summaryEl.offsetHeight}px`;
     this.animation && this.animation.cancel(), this.animation = this.$el.animate(
       {
         height: [i, t]
@@ -30,7 +32,7 @@ const n = () => ({
   },
   expand() {
     this.isOpen = !0, this.isExpanding = !0;
-    const i = `${this.$el.offsetHeight}px`, t = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
+    const i = `${this.$el.offsetHeight}px`, t = `${this.summaryEl.offsetHeight + this.contentEl.offsetHeight}px`;
     this.animation && this.animation.cancel(), this.animation = this.$el.animate(
       {
         height: [i, t]

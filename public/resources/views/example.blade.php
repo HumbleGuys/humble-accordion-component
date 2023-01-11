@@ -1,5 +1,4 @@
 <x-layout>
-    @for ($i = 0; $i < 100; $i++)
     <div style="padding:10rem; width: 100rem; margin:auto; max-width:100%;">
         <x-accordion::base>
             <x-accordion::header>
@@ -55,6 +54,15 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum commodi facere assumenda? Quibusdam excepturi exercitationem, ullam accusantium architecto incidunt saepe maxime veritatis nisi laborum reiciendis iste facilis nihil deleniti repellat.
             </x-accordion::panel>
         </x-accordion::base>
+
+        <x-accordion::base>
+            <x-accordion::header>
+                Lorem ipsum dolor
+            </x-accordion::header>
+    
+            <x-accordion::panel>
+                Lorem ipsum dolor sit a
+            </x-accordion::panel>
+        </x-accordion::base>
     </div>
-    @endfor
 </x-layout>
